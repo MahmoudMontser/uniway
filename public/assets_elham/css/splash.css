@@ -1,0 +1,43 @@
+
+
+/*page  first color #206075*/
+/*page  second color #192D5B*/
+html,body {
+    height: 100%;
+
+}
+
+.container-fluid{
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background: -webkit-linear-gradient( to bottom,#206075, #192D5B);
+    background: -moz-linear-gradient( to bottom, #206075, #192D5B);
+    background: -ms-linear-gradient( to bottom,#206075, #192D5B);
+    background: -o-linear-gradient( to bottom,#206075, #192D5B);
+    background: linear-gradient( to bottom,#206075, #192D5B);
+    position: absolute;
+
+}
+#splashPage{
+    color: #000;}
+#splashPage:hover{color:#000 }
+
+.logo  {
+    align-content: center;
+    width:50%;
+    margin: auto;
+}
+.welcome{
+    position: absolute;
+    bottom: 15%;
+}
+img{
+    margin:auto;
+    position: absolute;
+    margin-top:20%;
+
+}

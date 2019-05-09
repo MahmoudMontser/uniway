@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:linear-gradient(to right,#206075 ,#192D5B);}
+.pay{background: rgba(240,240,240,0.3); margin-top: 20px;}
+.pay2{margin-top: 10px; }
+.table-borderless td,
+.table-borderless th {
+    border: 0;}
+.logo{display: block; margin-top: 5px; margin-left: auto; margin-right: auto; width: 150px}
+.footer { left: 0;bottom: 0;width: 100%;border-top: solid 1px black; background-color:aliceblue;  color: white;text-align: center;}
+
+
+
+
+
+
+
+

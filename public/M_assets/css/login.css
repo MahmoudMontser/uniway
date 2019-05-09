@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:linear-gradient(to right,#206075 ,#192D5B);}
+.login{
+	height: 100%;
+}
+
+.btn{margin-top: 30px}
+#google{float: left; width:110px;}
+#facebook{float:right; width:77px }
+.logo{display: block; margin-top: 10px; margin-left: auto; margin-right: auto; width: 150px}
+.footer { left: 0;bottom: 0;width: 100%;border-top: solid 1px black; background-color:aliceblue;  color: white;text-align: center;
+}

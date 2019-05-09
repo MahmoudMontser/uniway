@@ -1,0 +1,81 @@
+@charset "UTF-8";
+.day-selector, .hours-selector {
+  float: left;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0 5px;
+}
+
+.selected {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  background-image: linear-gradient(top, #f5f5f5, #f1f1f1);
+  border: 1px solid gray;
+  box-sizing: border-box;
+  font-size: 12px;
+  height: 27px;
+  line-height: 20px;
+  min-width: 145px;
+  padding: 2px 30px 2px 10px;
+  position: relative;
+}
+.text .selected.error::-webkit-input-placeholder {
+  color: red;
+  font-style: italic;
+}
+.dropdown .selected:after {
+  content: '▾';
+  position: absolute;
+  right: 5px;
+}
+.hours-selector .selected {
+  padding-right: 5px;
+}
+
+.select {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  background-image: linear-gradient(top, #f5f5f5, #f1f1f1);
+  display: none;
+  font-size: 12px;
+  padding: 5px 0;
+  top: 29px;
+}
+
+.option {
+  padding: 5px 20px;
+  position: relative;
+}
+.option:hover {
+  background: gray;
+}
+.option.active:before {
+  content: '✓';
+  display: block;
+  font-size: 14px;
+  left: 5px;
+  position: absolute;
+  top: 0;
+}
+
+/*
+* jQuery UI Adjustments
+*/
+.ui-autocomplete {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  background-image: linear-gradient(top, #f5f5f5, #f1f1f1);
+  border: 0;
+  border-radius: 0;
+}
+.ui-autocomplete.ui-menu {
+  padding: 5px 0;
+}
+.ui-autocomplete .ui-menu-item {
+  font-size: 12px;
+  width: 100%;
+}
+.ui-autocomplete .ui-menu-item .ui-state-focus {
+  background: gray;
+  border: 0;
+  border-radius: 0;
+}

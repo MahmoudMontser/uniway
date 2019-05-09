@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:linear-gradient(to right,#206075 ,#192D5B);}
+.user{background-color:rgba(240,240,240,0.3); margin-top: 20px; width:200px; height: 200px }
+
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+.logo{display: block; margin-top: 5px; margin-left: auto; margin-right: auto; width: 150px}
+.footer {left: 0;bottom: 0;width: 100%;border-top: solid 1px black; background-color:aliceblue;  color: white;text-align: center;}
