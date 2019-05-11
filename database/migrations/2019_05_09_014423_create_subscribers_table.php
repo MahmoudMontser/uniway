@@ -15,9 +15,10 @@ class CreateSubscribersTable extends Migration
     {
         Schema::create('subscribers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('status')->default('extra')->nullable();
+            $table->integer('seats')->default('2')->nullable();
             $table->json('direction')->nullable();
             $table->json('filter')->nullable();
-            $table->string('status')->default('extra');
             $table->integer('trip_id')->unsigned();
             $table->foreign('trip_id')->references('id')->on('trips');
             $table->integer('user_id')->unsigned();

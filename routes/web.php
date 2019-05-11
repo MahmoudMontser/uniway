@@ -29,3 +29,5 @@ Route::get('/d', function () {
 });
 
 Route::get('profile_create_page','User\RegisterController@create_profile_page');
+
+Route::post('match_or_create','TripController@match_or_create')->name('match_or_create');

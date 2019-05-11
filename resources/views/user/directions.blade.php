@@ -174,6 +174,11 @@
                     window.alert('Directions request failed due to ' + status);
                 }
             });
+        var location_lat = originPlaceId.getPosition().lat();
+        var location_lng = originPlaceId.getPosition().lng();
+        var destination_lat = destinationPlaceId.getPosition().lat();
+        var destination_lng = destinationPlaceId.getPosition().lng();
+        display(location_lat,location_lng,destination_lat,destination_lng);
     };
 
 </script>
