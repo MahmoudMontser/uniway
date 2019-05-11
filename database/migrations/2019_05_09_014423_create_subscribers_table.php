@@ -19,10 +19,10 @@ class CreateSubscribersTable extends Migration
             $table->integer('seats')->default('2')->nullable();
             $table->json('direction')->nullable();
             $table->json('filter')->nullable();
-            $table->integer('trip_id')->unsigned();
-            $table->foreign('trip_id')->references('id')->on('trips');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('trip_id')->unsigned()->nullable();
+            $table->foreign('trip_id')->references('id')->on('trips')->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->nullable();
             $table->timestamps();
         });
     }

@@ -17,8 +17,6 @@ class CreateTripsTable extends Migration
             $table->increments('id');
             $table->json('time')->nullable();
             $table->integer('seats')->nullable();
-            $table->integer('subscriber_id')->unsigned()->nullable();
-            $table->foreign('subscriber_id')->references('id')->on('subscribers')->onUpdate('cascade');
             $table->timestamps();
         });
     }

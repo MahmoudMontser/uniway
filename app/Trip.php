@@ -14,6 +14,6 @@ class Trip extends Model
 
     public function subscribers(){
 
-        $this->hasMany(Subscriber::class,'subscribers_id','id');
+       return $this->hasMany(Subscriber::class,'subscribers_id','id');
     }
 }
