@@ -18,3 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('trip','API\TripController@match_or_create');
+Route::get('trip_today','API\TripController@trip_today');
+Route::get('trip','API\TripController@my_trips');
+
+
+Route::post('subscription','API\TripController@trip_subscription');
+Route::delete('subscription/{id}','API\TripController@unsubscribe');
+Route::get('subscription/{id}','API\TripController@my_subscriptions');
+
+

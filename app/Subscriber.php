@@ -11,6 +11,7 @@ class Subscriber extends Model
     public function trip(){
         return $this->belongsTo(Trip::class,'trip_id','id');
     }
+
 }
 
 

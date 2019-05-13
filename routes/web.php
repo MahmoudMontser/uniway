@@ -31,3 +31,6 @@ Route::get('/d', function () {
 Route::get('profile_create_page','User\RegisterController@create_profile_page');
 
 Route::post('match_or_create','TripController@match_or_create')->name('match_or_create');
+
+Route::post('subscription','TripController@trip_subscription')->name('make_trip_subscription');
+Route::get('my_trips','API\TripController@my_trips')->name('all_user_trips');

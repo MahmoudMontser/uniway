@@ -12,6 +12,7 @@ class TripController extends Controller
     public function match_or_create(Request $request)
     {
 
+
         $trips = Trip::all();
 
 
@@ -24,6 +25,7 @@ class TripController extends Controller
 
         if ($request['DR'] == 'rider') {
             if ($trips) {
+
 
                 foreach ($trips as $trip) {
                     // dd($trip->id);
@@ -114,7 +116,7 @@ class TripController extends Controller
         public function trip_subscription(Request $request){
         $trip=Trip::wherId($request['trip_id']);
         $trip_driver=$trip->subscribers->wherStatus('master')->get();
-        if ($trip_driver->filter['online_only']==false){
+
 
             if($trip_driver->filter['rating']<=Auth::rating()&&$trip_driver->filter['seats']<=$request['seats']){
                 $s=new Subscriber();
@@ -128,14 +130,21 @@ class TripController extends Controller
             }else return response()->json(['value'=>false,'msg'=>'You do not fit the conditions of the car owner' ]);
 
 
+
+
+
+
+    }
+
+    public function my_trips(){
+        $subs=Subscriber::all()->where('user_id',Auth::id());
+        $trips=[];
+        foreach ($subs as $sub){
+            $trips[]=$sub->trip;
         }
-        if ($trip_driver->filter['online_only']==false){
-
-
-            
-        }
-
-
+        if ($trips) {
+            return response()->json(['value' => true, 'msg' => 'this is all of your trips', 'data' => $trips]);
+        }else return response()->json(['value'=>false,'msg'=>'no trips yet']);
     }
 
 
