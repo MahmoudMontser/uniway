@@ -26,4 +26,11 @@ Route::post('subscription','API\TripController@trip_subscription');
 Route::delete('subscription/{id}','API\TripController@unsubscribe');
 Route::get('subscription/{id}','API\TripController@my_subscriptions');
 
+Route::post('rating','API\RatingController@rate');
+
+
+Route::get('user','API\UserController@index');
+
+
+
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Subscriber;
@@ -57,11 +58,12 @@ class TripController extends Controller
 
                                     }
                                 }
-                                if ($loction_state == true && $destination_state == true) {
 
-                                    $av_trips = [$trip->id];
+                            }
+                            if ($loction_state == true && $destination_state == true) {
 
-                                }
+                                $av_trips[] = [$trip->id];
+
                             }
                         }
 
@@ -71,21 +73,21 @@ class TripController extends Controller
                     return response()->json(['value' => false, 'msg' => 'no available trips with your inputs']);
                 }
                 $trips_information = [];
+
                 foreach ($av_trips as $trip_id) {
                     $target_trip = Trip::whereId($trip_id);
-                    $target_trip_subscribers = Subscriber::all()->where('trip_id', $trip->id);
+                    $target_trip_subscribers = Subscriber::all()->where('trip_id', $trip_id[0]);
                     $subscribers = [];
                     foreach ($target_trip_subscribers as $subscriber) {
 
-                        $subscribers[] = ['id' => $subscriber->user_id, 'status' => $subscriber->status];
+
+                        $subscribers[] = ['id' => $subscriber->user_id, 'status' => $subscriber->status,'rating'=>$subscriber->user['id']];
                     }
 
                     $master = Subscriber::all()->where('trip_id', $trip->id)->where('status', 'master')->first();
-                    $trips_information[] = ['master_begin_point' => $master['direction']['location'],
-                        'master_destination_point' => $master['direction']['destination'],
-                        'trip_time' => $trip->time,
+                    $trips_information[] = [
                         'subscribers_id' => $subscribers,
-                        'trip_id' => $trip->id,
+                        'trip_id' => $trip_id[0],
                     ];
 
 

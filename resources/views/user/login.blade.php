@@ -41,7 +41,7 @@
     <a href="{{route('facebook_login')}}"><img src="{{asset('M_assets/img/facebook.png')}}" alt="login with google"  id="facebook"></a>
 </div>
 <div class="signup container align-items-center">
-    <a href="#" style="color: aqua;"><h4 style="text-align: center;">Sign Up</h4></a>
+    <a href="{{route('register_page')}}" style="color: aqua;"><h4 style="text-align: center;">Sign Up</h4></a>
 </div>
 <!-- footer -->
 <div class="footer fixed-bottom">

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layout/splash_screen');
+    return view('layout\splash_screen');
 });
 Route::get('login/google', 'User\LoginController@redirectToProvider')->name('google_login');
 Route::get('login/google/callback', 'User\LoginController@handleProviderCallback');
@@ -33,4 +33,14 @@ Route::get('profile_create_page','User\RegisterController@create_profile_page');
 Route::post('match_or_create','TripController@match_or_create')->name('match_or_create');
 
 Route::post('subscription','TripController@trip_subscription')->name('make_trip_subscription');
-Route::get('my_trips','API\TripController@my_trips')->name('all_user_trips');
+Route::get('my_trips','TripController@my_trips')->name('all_user_trips');
+
+Route::post('rating','RatingController@rate')->name('rate');
+
+
+
+
+Route::get('test', function () {
+    event(new App\Events\TripNow('Someone'));
+    return "Event has been sent!";
+});
