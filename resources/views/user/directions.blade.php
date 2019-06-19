@@ -300,6 +300,7 @@
                 me.originPlaceId = place.place_id;
             } else {
                 me.destinationPlaceId = place.place_id;
+
             }
             me.route();
         });
@@ -371,29 +372,25 @@
 </script>
 
 <script>
-    jQuery(document).ready(function(){
-        jQuery('#ajaxSubmit').click(function(e){
-            e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-            jQuery.ajax({
-                url: "{{ url('match_or_create') }}",
-                method: 'post',
-                data: {
-                    go: jQuery('#time').val(),
-                    back: jQuery('#time_1').val(),
-                    DR: jQuery('#mode').val(),
-                    seats: jQuery('#seats').val(),
-                    days: jQuery('Days').val()
-                },
-                success: function(result){
-                    console.log(result);
-                }});
-        });
+    $.ajax({
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '{{route('match_or_create')}}',
+        data:[
+
+        ],
+        success: function () {
+
+
+        }
+        ,
+        error: function () {
+            console.log(data);
+        }
     });
+
 </script>
 <!-- end Ajax setup and request -->
 

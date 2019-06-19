@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('age')->nullable();
             $table->double('national_id')->nullable();
             $table->string('password');
+            $table->string('pic')->nullable();
             $table->integer('rating')->nullable();
             $table->rememberToken();
             $table->timestamps();

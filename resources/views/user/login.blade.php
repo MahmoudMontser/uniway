@@ -38,10 +38,12 @@
 
 
     <a href="{{route('google_login')}}"><img src="{{asset('M_assets/img/Gmail.png')}}" alt="login with google" id="google"></a>
+
     <a href="{{route('facebook_login')}}"><img src="{{asset('M_assets/img/facebook.png')}}" alt="login with google"  id="facebook"></a>
 </div>
 <div class="signup container align-items-center">
     <a href="{{route('register_page')}}" style="color: aqua;"><h4 style="text-align: center;">Sign Up</h4></a>
+
 </div>
 <!-- footer -->
 <div class="footer fixed-bottom">
@@ -53,6 +55,16 @@
 <script src="{{asset('M_assets/bootstrap\bootstrap.min.css')}}"></script>
 <script src="{{asset('M_assets/js\jquery-3.3.1.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="{{asset('js\sweetalert.min.js')}}"></script>
+<script>
+    @if(notify()->ready())
 
+    swal({
+        title:'{!! notify()->message() !!}',
+        icon:"{{notify()->type()}}",
+    });
+
+    @endif
+</script>
 </body>
 </html>

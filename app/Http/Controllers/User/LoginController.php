@@ -15,14 +15,16 @@ class LoginController extends Controller
 
       $validator=Validator::make($request->all(),[
           'phone'=>'exists:users,phone|regex:/(01)[0-9]{9}/',
+          'password'=>'required'
       ]);
 
       if($validator){
          $cardinalities=$request->only('phone','password');
          if (Auth::attempt($cardinalities)){
-             return redirect()->route('/home');
-         }else return back()->withInput();
-      }else return back()->withInput();
+             $user=Auth::user();
+             return redirect()->route('home_page')->with(notify()->flash($user->name,'info'));
+         }else return back()->with(notify()->flash(implode('and',$validator->errors()->all()),'error'));
+      }else return back()->with(notify()->flash($validator->errors(),'danger'));
   }
 
 

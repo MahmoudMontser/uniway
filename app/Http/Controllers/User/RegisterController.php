@@ -30,8 +30,10 @@ class RegisterController extends Controller
             $user->phone=$request['phone'];
             $user->national_id=$request['national_id'];
             $user->save();
-            return'hello new user';
-        }else return ['msg'=>$validator->errors()];
+
+
+            return redirect('login_page')->with(notify()->flash('login please','info'));
+        }else return redirect()->back()->with(notify()->flash($validator->errors(),'error'));
 
 
     }

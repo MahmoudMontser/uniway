@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Subscriber;
 use App\Trip;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon;
 
 class TripController extends Controller
 {
@@ -137,14 +139,53 @@ class TripController extends Controller
     }
 
     public function my_trips(){
+
         $subs=Subscriber::all()->where('user_id',Auth::id());
         $trips=[];
         foreach ($subs as $sub){
             $trips[]=$sub->trip;
         }
+        $trips_arr=[];
         if ($trips) {
-            return response()->json(['value' => true, 'msg' => 'this is all of your trips', 'data' => $trips]);
+            foreach ($trips as $trip){
+                $subscriberss=[];
+
+                $subscribers=Subscriber::whereTrip_id($trip->id)->get();
+                foreach ($subscribers as $subscriber)
+                {
+                    $subscriberss[] = ['id' => $subscriber->user_id, 'status' => $subscriber->status,'rating'=>$subscriber->user['rating'],'name'=>$subscriber->user['name']];
+
+                }
+                $trips_arr[]=[ 'subscribers_id'=>$subscriberss,'trip_id'=>$trip->id];
+
+
+
+            }
+
+
+
+            return response()->json(['value' => true, 'msg' => 'this is all of your trips', 'data' => $trips_arr]);
         }else return response()->json(['value'=>false,'msg'=>'no trips yet']);
+    }
+
+
+    public function get_trip($id){
+        $target_subs=Subscriber::whereTrip_id($id)->get();
+        $info=[];
+        foreach ($target_subs as $sub){
+            $info[]=['direction'=>$sub->direction];
+            $info[]=['user_id'=>$sub->user_id];
+
+        }
+        return response()->json($info);
+
+
+
+    }
+    public function trip_checker(){
+
+
+
     }
 
 

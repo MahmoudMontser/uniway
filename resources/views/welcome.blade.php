@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,8 +71,9 @@
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
 
-    var pusher = new Pusher('95d2ddb77aaf98a7f6cc', {
-        encrypted: true
+    var pusher = new Pusher('89b2e51e0d93ea97697b', {
+        forceTLS: true,
+        cluster:'eu',
     });
 
     // Subscribe to the channel we specified in our Laravel Event
@@ -108,6 +108,9 @@
         notificationsWrapper.find('.notif-count').text(notificationsCount);
         notificationsWrapper.show();
     });
+
+
 </script>
+
 </body>
 </html>

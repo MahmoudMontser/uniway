@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>sidenav</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/select trip.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="https://raw.githubusercontent.com/l-lin/font-awesome-animation/master/dist/font-awesome-animation.min.css">
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<!-- start of page-->
+
+<div class="container-fluid">
+    <!--#wrapper-->
+    <div id="wrapper">
+        <!--.overlay class-->
+        <div class="overlay"></div>
+        <!--/.overlay class-->
+
+        <!-- Sidebar -->
+        <!-- .navbar fixed-top-->
+        <nav class="navbar fixed-top" id="sidebar-wrapper" role="navigation">
+            <!-- ul-->
+            <ul class="nav sidebar-nav">
+
+                <!--sideNav brand&&logo-->
+                <!--.sidebar-brand-->
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <a href="#"><img src="Assets/img/1.png " alt=""></a>
+                    </div>
+                </div>
+                <!--/.sidebar-brand-->
+                <!--sideNav upper Link-->
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#discovery">DISCOVERY</a></li>
+                <li><a href="#photos">PHOTOS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#profile">PROFILE</a></li>
+                <!--/sideNav upper Link-->
+            </ul>
+            <!-- ul-->
+            <!--///////////////////sideNav Footer-->
+            <!--.card-footer-->
+            <div class="card-footer">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+                        <td>
+                            <a href="">lorem</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--sideNav social-->
+                <div class="social">
+                    <a href="#facebook"></a>
+                    <a href="#twitter"></a>
+                    <a href="#linkedin"></a>
+                    <a href="#google-plus"></a>
+
+                </div>
+                <!--/sideNav social-->
+            </div>
+            <!--/.card-footer-->
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+
+        <!--close && open button of nav -->
+        <!--#page-content-wrapper -->
+
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <!--/#page-content-wrapper -->
+            <!--/close && open button of nav -->
+            <!-- Page Content -->
+            <div class="container page">
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-8 col-lg-offset-2 " id="b" >
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+</div>
+<!-- /.container-fluid -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+
+
+    $.getJSON('rider response.json',function(response){
+        var x=response.data;
+        var n=[];
+        for (var i = 0; i < x.length; i++) {
+            var trip_id=x[i].trip_id;
+
+            var bs=x[i].subscribers_id;
+
+
+            $.each(bs, function (index, value) {
+                var rating=value.rating;
+                if (value.status=='master') {
+// document.getElementById('b').innerHTML += '<p> rating:'+value.rating+'</p>';
+                    var innerdiv=$("<div class='innerdiv container col-sm-10 col-lg-8 service1 '></div>");
+
+                    var driver_img=$("<img class='supscriber_img' id='driver_img' src='assets/img/4.jpg' >");
+                    (innerdiv).append(driver_img);
+                    for(var j=0;j<rating;j++){
+                        (innerdiv).append("<span class='fa fa-star  checked_rate'></span>")
+                    }
+                    for (k=0;k<(5-rating);k++)
+                    {
+                        (innerdiv).append("<span class='fa fa-star-o '></span>")
+                    }
+
+                    var subscribers=$("<div class='row supscriber_div'><div class='col-lg-6 col-sm-6' style='margin: auto;'>" +
+                        "<img src='assets/img/4.jpg' class='supscriber_img'>" +
+                        "<img src='assets/img/6.jpg' class='supscriber_img'>" +
+                        "<img src='assets/img/3.jpg' class='supscriber_img'>" +"<input type=\"radio\" name=\"rGroup\" value="+trip_id+" id=\"r1\"  class='btn '/>\n"+
+                        "</div></div>");
+                    // var timespan=$("<span class='span1'><b>time:</b><span>"+value.rating+"</span></span><br>");
+
+                    $("#b").append(innerdiv);
+
+                    (innerdiv).append(subscribers);
+
+                    $(".page").append(
+                        "<div class=\"col-lg-4 col-sm-6 container\" style=\"position:fixed;bottom:5%;margin-left:10%\">\n" +
+                        "<div class='form-group'><label for=\"Sets_Demanded\" style='color: #e2e6ea'>" +
+                        " Sets Demanded : </label><input type=\"text\" id=\"Sets_Demanded\" style='width: 100px;margin-left: 20px'>" +
+                        "<button id='b1' class='btn-success ss btn-sm' style='margin:20px'>Next</button></div></div>"
+                    )
+
+
+                }
+
+
+// Will stop running after "three"
+
+            });
+
+
+
+// document.getElementById('b').innerHTML += '<p> trip id:'+trip_id+'</p>';
+
+
+        }
+
+
+
+
+    });
+
+
+</script>
+
+
+<script src="Assets/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script>
+    jQuery(document).ready(function(){
+
+        jQuery('.ss').click(function(e){
+            var radioValue = $("input[id='r1']:checked").val();
+            var sets= $('#Sets_Demanded').val();
+            // console.log(radioValue);
+            console.log(sets);
+
+
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "d.html",
+                method: 'POST',
+                data: {
+                    trip_id:radioValue,
+                    seats: sets
+
+                },
+                success: function(result){
+                    console.log(result);
+                }});
+
+        });
+
+    });
+
+</script>
+
+
+<!--version 1.9.1 of jquery at least with 4.0.0 bootstrap-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="Assets/js/sidenav.js"></script>
+
+</body>
+</html>

@@ -28,11 +28,11 @@
         <div class="row ">
             <!--.col-sm welcome text-center-->
             <div class="col-sm welcome text-center">
-                <h3 class="wow heartBeat ">welcome</h3>
+                <h3 class="wow heartBeat " style="color:#ececf6;">welcome</h3>
                 <!--/.col-sm welcome text-center-->
                 <!--paragraph after welcome-->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, non.</p>
+                <p style="color: #c0ddf6">Uniway is your solution for daily comfortable ride sharing trips</p>
 
             </div>
         </div>
